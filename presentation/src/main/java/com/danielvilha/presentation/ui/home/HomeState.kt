@@ -1,6 +1,6 @@
 package com.danielvilha.presentation.ui.home
 
-import com.danielvilha.model.Ad
+import com.danielvilha.model.data.Ad
 
 
 data class HomeState(

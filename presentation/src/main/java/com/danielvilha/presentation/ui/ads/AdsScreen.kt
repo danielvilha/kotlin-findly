@@ -29,8 +29,8 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
-import com.danielvilha.model.Ad
-import com.danielvilha.model.AdType
+import com.danielvilha.model.data.Ad
+import com.danielvilha.model.enum.AdType
 import com.danielvilha.presentation.util.ExcludeFromJacocoGeneratedReport
 import com.danielvilha.presentation.util.FindlyTopBar
 import com.danielvilha.presentation.util.LightDarkPreview
@@ -104,7 +104,7 @@ fun AdsScreen(state: AdsState) {
                                 Spacer(modifier = Modifier.height(8.dp))
 
                                 Row(horizontalArrangement = Arrangement.SpaceBetween) {
-                                    TextButton(onClick = { state.onEditClick(ad) }) {
+                                    TextButton(onClick = { state.onEditClick(ad.id.toString()) }) {
                                         Text(text = "Edit")
                                     }
                                     TextButton(onClick = { state.onToggleVisibility(ad) }) {

@@ -2,7 +2,7 @@ package com.danielvilha.findly.ui.ads
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.danielvilha.model.repository.AdRepository
+import com.danielvilha.model.repository.AdRepositoryImpl
 import com.danielvilha.model.repository.AdResult
 import com.danielvilha.presentation.ui.ads.AdsState
 import com.google.firebase.auth.FirebaseAuth
@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AdsViewModel @Inject constructor(
-    private val repository: AdRepository
+    private val repository: AdRepositoryImpl
 ) : ViewModel() {
     private val _state = MutableStateFlow(AdsState())
     val state: StateFlow<AdsState> = _state
@@ -24,7 +24,7 @@ class AdsViewModel @Inject constructor(
     init {
         _state.value = _state.value.copy(
             onBackPressed = ::onBackPressed,
-            onEditClick = {}
+            onEditClick = ::onEditClick
         )
         loadUserAds()
     }
@@ -35,6 +35,10 @@ class AdsViewModel @Inject constructor(
 
     private fun onBackPressed() {
         onNavigate?.invoke("onBackPressed")
+    }
+
+    private fun onEditClick(id: String) {
+        onNavigate?.invoke("onEditClick/$id")
     }
 
     private fun loadUserAds() {

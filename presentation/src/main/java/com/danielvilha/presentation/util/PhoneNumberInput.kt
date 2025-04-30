@@ -49,7 +49,6 @@ fun PhoneNumberInput(
                 onValueChange = {},
                 label = "",
                 readOnly = true,
-                isEnabled = isEditable,
                 modifier = Modifier
                     .width(130.dp)
                     .menuAnchor(MenuAnchorType.PrimaryEditable, isEditable),
@@ -77,7 +76,7 @@ fun PhoneNumberInput(
             onValueChange = onPhoneNumberChange,
             label = "Phone",
             isError = isError,
-            isEnabled = isEditable,
+            readOnly = !isEditable,
             supportingText = errorText,
             modifier = Modifier.weight(1f)
         )

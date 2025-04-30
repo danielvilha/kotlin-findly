@@ -1,4 +1,7 @@
-package com.danielvilha.model
+package com.danielvilha.model.data
+
+import com.danielvilha.model.enum.AdType
+import com.danielvilha.model.CountryCode
 
 data class Ad(
     var id: String? = null,

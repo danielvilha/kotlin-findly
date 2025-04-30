@@ -1,6 +1,6 @@
 package com.danielvilha.presentation.ui.ads
 
-import com.danielvilha.model.Ad
+import com.danielvilha.model.data.Ad
 
 
 data class AdsState(
@@ -9,6 +9,6 @@ data class AdsState(
     var error: String? = null,
 
     val onBackPressed: () -> Unit = {},
-    val onEditClick: (Ad) -> Unit = {},
+    val onEditClick: (String) -> Unit = {},
     val onToggleVisibility: (Ad) -> Unit = {},
 )

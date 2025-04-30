@@ -12,6 +12,7 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.fragment.findNavController
 import com.danielvilha.findly.R
+import com.danielvilha.model.enum.AdMode
 import com.danielvilha.presentation.ui.home.HomeScreen
 import com.danielvilha.theme.FindlyTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -37,17 +38,23 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.setNavigationCallback { route ->
-            when(route) {
-                "onAdClicked" -> {
+            when {
+                route.startsWith("onAdClicked/") -> {
                     val id = route.removePrefix("onAdClicked/")
                     val bundle = Bundle().apply {
                         putString("id", id)
+                        putString("mode", AdMode.VIEW.name)
                     }
                     findNavController().navigate(R.id.adFragment, bundle)
                 }
-                "onCreateAdClicked" -> findNavController().navigate(R.id.adFragment)
-                "onNavigateToMyAdsClicked" -> findNavController().navigate(R.id.adsFragment)
-                "onLogoutConfirmed" -> findNavController().navigate(R.id.loginFragment)
+                route == "onCreateAdClicked" -> {
+                    val bundle = Bundle().apply {
+                        putString("mode", AdMode.CREATE.name)
+                    }
+                    findNavController().navigate(R.id.adFragment, bundle)
+                }
+                route == "onNavigateToMyAdsClicked" -> findNavController().navigate(R.id.adsFragment)
+                route == "onLogoutConfirmed" -> findNavController().navigate(R.id.loginFragment)
             }
         }
     }

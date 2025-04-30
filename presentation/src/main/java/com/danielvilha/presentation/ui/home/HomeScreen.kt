@@ -47,7 +47,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
-import com.danielvilha.model.Ad
+import com.danielvilha.model.data.Ad
 import com.danielvilha.presentation.util.ExcludeFromJacocoGeneratedReport
 import com.danielvilha.presentation.util.FindlyTopBar
 import com.danielvilha.presentation.util.LightDarkPreview

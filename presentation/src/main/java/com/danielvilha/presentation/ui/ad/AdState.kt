@@ -1,12 +1,12 @@
 package com.danielvilha.presentation.ui.ad
 
 import android.net.Uri
-import com.danielvilha.model.Ad
-import com.danielvilha.model.AdMode
-import com.danielvilha.model.AdType
+import com.danielvilha.model.data.Ad
+import com.danielvilha.model.enum.AdMode
+import com.danielvilha.model.enum.AdType
 import com.danielvilha.model.CountryCode
 import com.danielvilha.model.CountryCodeList
-import com.danielvilha.model.FieldValidation
+import com.danielvilha.model.data.FieldValidation
 
 data class AdState(
     var ad: Ad = Ad(),

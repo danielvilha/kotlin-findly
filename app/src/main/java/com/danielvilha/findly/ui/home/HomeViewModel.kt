@@ -2,7 +2,7 @@ package com.danielvilha.findly.ui.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.danielvilha.model.repository.AdRepository
+import com.danielvilha.model.repository.AdRepositoryImpl
 import com.danielvilha.model.repository.AdResult
 import com.danielvilha.presentation.ui.home.HomeState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val repository: AdRepository
+    private val repository: AdRepositoryImpl
 ) : ViewModel() {
     private val _state = MutableStateFlow(HomeState())
     val state: StateFlow<HomeState> = _state

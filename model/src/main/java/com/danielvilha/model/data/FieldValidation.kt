@@ -1,4 +1,4 @@
-package com.danielvilha.model
+package com.danielvilha.model.data
 
 data class FieldValidation(
     val titleError: String? = null,

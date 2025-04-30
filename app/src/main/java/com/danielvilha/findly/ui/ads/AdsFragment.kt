@@ -10,6 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.fragment.findNavController
+import com.danielvilha.findly.R
+import com.danielvilha.model.enum.AdMode
 import com.danielvilha.presentation.ui.ads.AdsScreen
 import com.danielvilha.theme.FindlyTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -37,8 +40,16 @@ class AdsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.setNavigationCallback { route ->
-            when (route) {
-                "onBackPressed" -> requireActivity().onBackPressedDispatcher.onBackPressed()
+            when {
+                route.startsWith("onEditClick/") -> {
+                    val id = route.removePrefix("onEditClick/")
+                    val bundle = Bundle().apply {
+                        putString("id", id)
+                        putString("mode", AdMode.EDIT.name)
+                    }
+                    findNavController().navigate(R.id.adFragment, bundle)
+                }
+                route == "onBackPressed" -> requireActivity().onBackPressedDispatcher.onBackPressed()
             }
         }
     }

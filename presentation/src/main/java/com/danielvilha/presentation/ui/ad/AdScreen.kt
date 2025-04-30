@@ -49,10 +49,10 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import coil3.compose.rememberAsyncImagePainter
-import com.danielvilha.model.Ad
-import com.danielvilha.model.AdMode
-import com.danielvilha.model.AdType
-import com.danielvilha.model.AdTypeOption
+import com.danielvilha.model.data.Ad
+import com.danielvilha.model.enum.AdMode
+import com.danielvilha.model.enum.AdType
+import com.danielvilha.model.enum.AdTypeOption
 import com.danielvilha.presentation.util.ExcludeFromJacocoGeneratedReport
 import com.danielvilha.presentation.util.FindlyTopBar
 import com.danielvilha.presentation.util.LightDarkPreview
@@ -143,7 +143,7 @@ fun AdScreen(state: AdState) {
                         onTypeSelected = { type ->
                             if (type != null) state.onTypeChange(type)
                         },
-                        enabled = isEditable
+                        readOnly = !isEditable
                     )
                     if (isEditable) {
                         Row(
@@ -167,7 +167,7 @@ fun AdScreen(state: AdState) {
                         onValueChange = state.onTitleChange,
                         label = "Title",
                         isError = state.validation.titleError != null,
-                        isEnabled = isEditable,
+                        readOnly = !isEditable,
                         modifier = Modifier.fillMaxWidth(),
                         supportingText = state.validation.titleError
                     )
@@ -176,7 +176,7 @@ fun AdScreen(state: AdState) {
                         onValueChange = state.onDescriptionChange,
                         label = "Description",
                         isError = state.validation.descriptionError != null,
-                        isEnabled = isEditable,
+                        readOnly = !isEditable,
                         modifier = Modifier
                             .fillMaxWidth()
                             .heightIn(min = 240.dp),
@@ -199,7 +199,7 @@ fun AdScreen(state: AdState) {
                             onValueChange = state.onEmailChange,
                             label = "Email",
                             isError = state.validation.emailError != null,
-                            isEnabled = isEditable,
+                            readOnly = !isEditable,
                             modifier = Modifier.fillMaxWidth(),
                             supportingText = state.validation.emailError
                         )
@@ -210,7 +210,7 @@ fun AdScreen(state: AdState) {
                                 onValueChange = state.onAddressChange,
                                 label = "Address",
                                 isError = state.validation.addressError != null,
-                                isEnabled = isEditable,
+                                readOnly = !isEditable,
                                 modifier = Modifier.fillMaxWidth(),
                                 supportingText = state.validation.addressError
                             )
@@ -219,7 +219,7 @@ fun AdScreen(state: AdState) {
                                 onValueChange = state.onUrlChange,
                                 label = "URL",
                                 isError = state.validation.urlError != null,
-                                isEnabled = isEditable,
+                                readOnly = !isEditable,
                                 modifier = Modifier.fillMaxWidth(),
                                 supportingText = state.validation.urlError
                             )
@@ -297,7 +297,7 @@ fun AdTypeDropdown(
     state: AdState,
     selectedType: AdType?,
     onTypeSelected: (AdType?) -> Unit,
-    enabled: Boolean
+    readOnly: Boolean
 ) {
     var expanded by remember { mutableStateOf(false) }
 
@@ -321,8 +321,9 @@ fun AdTypeDropdown(
             onValueChange = { onTypeSelected },
             label = "Ad types",
             isError = state.validation.typeError != null,
+            readOnly = readOnly,
             modifier = Modifier
-                .menuAnchor(MenuAnchorType.PrimaryNotEditable, enabled)
+                .menuAnchor(MenuAnchorType.PrimaryNotEditable, !readOnly)
                 .fillMaxWidth(),
             supportingText = state.validation.typeError,
             trailingIcon = {

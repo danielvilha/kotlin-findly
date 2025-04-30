@@ -2,13 +2,13 @@ package com.danielvilha.findly.ui.ad
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.danielvilha.model.Ad
+import com.danielvilha.model.data.Ad
 import com.danielvilha.presentation.ui.ad.AdState
-import com.danielvilha.model.AdType
+import com.danielvilha.model.enum.AdType
 import com.danielvilha.model.CountryCode
 import com.danielvilha.model.CountryCodeList
-import com.danielvilha.model.FieldValidation
-import com.danielvilha.model.repository.AdRepository
+import com.danielvilha.model.data.FieldValidation
+import com.danielvilha.model.repository.AdRepositoryImpl
 import com.danielvilha.model.repository.AdResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -20,7 +20,7 @@ import kotlin.String
 
 @HiltViewModel
 class AdViewModel @Inject constructor(
-    private val repository: AdRepository
+    private val repository: AdRepositoryImpl
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(AdState())

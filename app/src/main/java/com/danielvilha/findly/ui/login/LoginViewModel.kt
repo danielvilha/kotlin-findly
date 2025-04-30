@@ -12,7 +12,7 @@ import androidx.credentials.exceptions.GetCredentialException
 import androidx.credentials.exceptions.NoCredentialException
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.danielvilha.findly.R
+import com.danielvilha.findly.BuildConfig
 import com.danielvilha.presentation.ui.login.LoginState
 import com.google.android.libraries.identity.googleid.GetGoogleIdOption
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
@@ -64,7 +64,7 @@ class LoginViewModel @Inject constructor() : ViewModel() {
         viewModelScope.launch {
             try {
                 val googleIdOption: GetGoogleIdOption = GetGoogleIdOption.Builder()
-                    .setServerClientId(context.getString(R.string.WEB_CLIENT_ID))
+                    .setServerClientId(BuildConfig.WEB_CLIENT_ID)
                     .setFilterByAuthorizedAccounts(false)
                     .build()
                 val request = GetCredentialRequest.Builder()

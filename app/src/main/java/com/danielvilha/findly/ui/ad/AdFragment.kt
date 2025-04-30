@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.danielvilha.presentation.ui.ad.AdScreen
-import com.danielvilha.model.AdMode
+import com.danielvilha.model.enum.AdMode
 import com.danielvilha.theme.FindlyTheme
 import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
@@ -38,16 +38,17 @@ class AdFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val id = arguments?.getString("id")
+        val argMode = arguments?.getString("mode")
         val userId = FirebaseAuth.getInstance().currentUser?.uid
-        var mode = when {
-            viewModel.state.value.ad.id.isNullOrBlank() -> AdMode.CREATE
-            viewModel.state.value.ad.userId == userId -> AdMode.EDIT
+        var mode = when(argMode) {
+            "CREATE" -> AdMode.CREATE
+            "EDIT" -> AdMode.EDIT
             else -> AdMode.VIEW
         }
         viewModel.onIdChange(id)
         viewModel.onUserIdChange(userId)
         viewModel.state.value.mode = mode
-        if ((mode == AdMode.EDIT || mode == AdMode.CREATE) && id?.isNotBlank() != null) {
+        if ((mode == AdMode.EDIT || mode == AdMode.VIEW) && id?.isNotBlank() != null) {
             viewModel.loadAd(id.toString())
         }
 
