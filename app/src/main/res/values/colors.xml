@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary_container_light">#FF7E9A58</color>
+    <color name="secondary_container_light">#FF8A9479</color>
+    <color name="tertiary_container_light">#FF6b9995</color>
+    <color name="primary_container_dark">#FF5B7538</color>
+    <color name="secondary_container_dark">#FF677157</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>
