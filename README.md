@@ -97,7 +97,7 @@ cd findly
 ### Actions:
 - **FAB**: Create new ad.
 - **Drawer Menu**:
-    - My Profile (coming soon)
+    - My Profile (User email)
     - My Ads
     - Logout
 
