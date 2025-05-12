@@ -53,6 +53,7 @@ class HomeFragment : Fragment() {
                     }
                     findNavController().navigate(R.id.adFragment, bundle)
                 }
+                route == "onNavigateToUserEditClicked" -> findNavController().navigate(R.id.userEditFragment)
                 route == "onNavigateToMyAdsClicked" -> findNavController().navigate(R.id.adsFragment)
                 route == "onLogoutConfirmed" -> findNavController().navigate(R.id.loginFragment)
             }

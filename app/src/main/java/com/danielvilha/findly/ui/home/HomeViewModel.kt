@@ -25,6 +25,7 @@ class HomeViewModel @Inject constructor(
             onAdClick = ::onAdClicked,
             onCreateAd = ::onCreateAdClicked,
             onNavigateToMyAds = ::onNavigateToMyAdsClicked,
+            onNavigateToUserEdit = ::onNavigateToUserEditClicked,
             onLogoutConfirmed = ::onLogoutConfirmed
         )
         loadAds()
@@ -44,6 +45,10 @@ class HomeViewModel @Inject constructor(
 
     private fun onNavigateToMyAdsClicked() {
         onNavigate?.invoke("onNavigateToMyAdsClicked")
+    }
+
+    private fun onNavigateToUserEditClicked() {
+        onNavigate?.invoke("onNavigateToUserEditClicked")
     }
 
     private fun onLogoutConfirmed() {

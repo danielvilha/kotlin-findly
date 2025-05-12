@@ -10,5 +10,6 @@ data class HomeState(
     val onCreateAd: () -> Unit = {},
     val onMenuClick: () -> Unit = {},
     val onNavigateToMyAds: () -> Unit = {},
+    val onNavigateToUserEdit: () -> Unit = {},
     val onLogoutConfirmed: () -> Unit = {},
 )

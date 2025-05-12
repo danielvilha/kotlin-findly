@@ -82,11 +82,30 @@ fun HomeScreen(state: HomeState) {
         drawerContent = {
             ModalDrawerSheet {
                 Column(modifier = Modifier.fillMaxSize()) {
-                    Text(
-                        text = FirebaseAuth.getInstance().currentUser?.email ?: "Unknown",
-                        modifier = Modifier.padding(16.dp),
-                        style = MaterialTheme.typography.titleMedium
-                    )
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(150.dp)
+                            .background(color = Color(0x994B5E3D)),
+                        contentAlignment = Alignment.BottomStart
+                    ) {
+                        NavigationDrawerItem(
+                            label = {
+                                Text(
+                                    text = FirebaseAuth.getInstance().currentUser?.email ?: "Unknown",
+                                    color = Color.White
+                                )
+                            },
+                            selected = false,
+                            onClick = {
+                                scope.launch {
+                                    drawerState.close()
+                                    state.onNavigateToUserEdit()
+                                }
+                            },
+                            modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
+                        )
+                    }
                     HorizontalDivider()
                     NavigationDrawerItem(
                         label = { Text(text = "My Ads") },

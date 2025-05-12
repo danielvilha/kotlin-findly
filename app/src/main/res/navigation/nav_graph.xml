@@ -30,6 +30,9 @@
         <action
             android:id="@+id/action_homeFragment_to_adsFragment"
             app:destination="@id/adsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_userEditFragment"
+            app:destination="@id/userEditFragment"/>
     </fragment>
 
     <fragment
@@ -55,4 +58,8 @@
         android:name="com.danielvilha.findly.ui.ads.AdsFragment"
         android:label="AdsFragment" />
 
+    <fragment
+        android:id="@+id/userEditFragment"
+        android:name="com.danielvilha.findly.ui.user.UserEditFragment"
+        android:label="userEditFragment"/>
 </navigation>

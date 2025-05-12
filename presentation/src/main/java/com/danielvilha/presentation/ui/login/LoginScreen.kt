@@ -111,7 +111,7 @@ fun LoginScreen(state: LoginState) {
             value = state.password,
             onValueChange = { state.onPasswordChange(it) },
             label = "Password",
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             isError = isPasswordValid,
             modifier = Modifier.fillMaxWidth(),
             visualTransformation = if (passwordVisible)
